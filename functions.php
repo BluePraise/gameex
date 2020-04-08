@@ -294,6 +294,7 @@ function ajax_filter_get_posts( $taxonomy ) {
   $args = array(
     'tag' => $taxonomy,
     'post_type' => 'game',
+    'category_name'  => 'escape-games',
     'posts_per_page' => -1
   );
 
@@ -308,17 +309,17 @@ function ajax_filter_get_posts( $taxonomy ) {
 
     <article id="post-<?php the_ID();?>" class="game-post">
 
-        <div class="d-flex fx-dir-col">
+        <div class="d-flex row">
 
             <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
-                <div class="game-post__thumbnail">
+                <div class="game-post__thumbnail col-md-4">
                     <a href="<?php the_permalink();?>" title="<?php the_title();?>">
                         <?php the_post_thumbnail(array(380, 250)); // Declare pixel size you need inside the array ?>
                     </a>
                 </div>
             <?php endif;?>
 
-            <div class="post__content">
+            <div class="post__content col-md-8">
                 <!-- post title -->
                 <h2>
                     <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
@@ -371,7 +372,7 @@ function ajax_search_get_posts( $search ) {
   // WP Query
   $args = array(
     's' => esc_attr( $search ),
-    'post_type' => 'game',
+    'post_type' => 'post',
     'posts_per_page' => -1
   );
 
@@ -386,17 +387,17 @@ function ajax_search_get_posts( $search ) {
 
     <article id="post-<?php the_ID();?>" class="game-post">
 
-        <div class="d-flex fx-dir-col">
+        <div class="d-flex row">
 
             <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
-                <div class="game-post__thumbnail">
+                <div class="game-post__thumbnail col-md-4">
                     <a href="<?php the_permalink();?>" title="<?php the_title();?>">
                         <?php the_post_thumbnail(array(380, 250)); // Declare pixel size you need inside the array ?>
                     </a>
                 </div>
             <?php endif;?>
 
-            <div class="post__content">
+            <div class="post__content col-md-8">
                 <!-- post title -->
                 <h2>
                     <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
@@ -420,7 +421,6 @@ function ajax_search_get_posts( $search ) {
 
 add_action('wp_ajax_search_posts', 'ajax_search_get_posts');
 add_action('wp_ajax_nopriv_search_posts', 'ajax_search_get_posts');
-
 
 
 /*------------------------------------*\

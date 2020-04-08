@@ -254,7 +254,7 @@
     $(function() {
         "use strict";
 
-        $(".js-collapse").click(function() {
+        $(".js-collapse-story").click(function() {
             $(this)
                 .next(".collapse__content")
                 .slideToggle();

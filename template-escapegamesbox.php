@@ -1,7 +1,7 @@
 <?php /* Template Name: Escape Games Box */ get_header(); ?>
 
 	<main role="main" class="main-overview main-landing">
-        <?php get_sidebar() ?>
+        <?php get_sidebar('escbox'); ?>
 		<!-- section -->
 		<section class="main-overview__content">
 
@@ -12,7 +12,7 @@
             <?php $query = new WP_Query([
                 'posts_per_page' => -1,
                 'post_type' => 'game',
-                'category_name'  => 'escape-games-box'
+                'category__in'  => 4
             ]);
                 while ( $query->have_posts() ) : $query->the_post(); ?>
 
@@ -36,7 +36,9 @@
                         <!-- /post title -->
 
                         <div class="single-fields">
-
+                            <div>
+                                <strong>Categorie:</strong> <span><?php echo get_the_category()[0]->cat_name ?></span>
+                            </div>
                             <div>
                                 <strong>Doel:</strong> <span><?php the_field('the_target'); ?></span>
                             </div>
@@ -55,7 +57,7 @@
                                 <?php html5wp_excerpt('html5wp_overview'); // Build your custom callback length in functions.php ?>
                             </div>
 
-                            <a href="<?php the_field('game_link');?>" class="btn btn-primary">Bekijk spel</a>
+                            <a href="<?php the_permalink();?>" class="btn btn-primary">Bekijk spel</a>
                         </div>
                     </div>
                 </div>
@@ -68,4 +70,4 @@
 		<!-- /section -->
 	</main>
 
-<?php get_footer(); ?>
+<?php get_footer('small'); ?>

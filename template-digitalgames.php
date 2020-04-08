@@ -1,8 +1,8 @@
-<?php /* Template Name: Digital Games Template */ get_header(); ?>
+<?php /* Template Name: Digital Toetsen Template */ get_header(); ?>
 
 	<main role="main" class="main-overview main-landing">
 		<!-- section -->
-        <?php get_sidebar() ?>
+        <?php get_sidebar('toetsen') ?>
 		<section class="main-overview__content">
 
 
@@ -59,6 +59,7 @@
 
                             <a href="#" class="btn btn-primary">Zet toets klaar</a>
                             <a href="<?php the_permalink();?>" class="btn btn-primary">Toets inzien</a>
+                            <a href="#" class="btn btn-primary">Rapportage</a>
                         </div>
                     </div>
 
@@ -77,4 +78,4 @@
 		<!-- /section -->
 	</main>
 
-<?php get_footer(); ?>
+<?php get_footer('small'); ?>

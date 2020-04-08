@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="text-center">
 
-                    <?php the_title('<h1>') ?>
+                    <?php the_title('<h2>') ?>
                 </div>
 
 

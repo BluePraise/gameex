@@ -3,18 +3,24 @@
     get_header();
 ?>
 
-    <main role="main" class="escape-main-overview container">
-        <div class="row content">
+    <main role="main" class="escape-main-overview">
+        <div class="content container">
 
 
-            <a href="<?php echo site_url(); ?>/escape-games-met-box/" class="block-link col-md-12">
-                <img class="img-responsive" src="http://ad:8888/wp-content/uploads/2020/02/Escape-game2.jpg" alt="">
-                <h3>Escape Games met Box</h3>
+            <a href="<?php echo site_url(); ?>/escape-games-met-box/" class="block-link row d-flex">
+                <img class="img-responsive col-md-4" src="<?php the_field('afbeelding_escape_games_met_box') ?>" alt="">
+                <div class="col-md-8">
+                    <h3><?php the_field('blok_titel_escape_box'); ?></h3>
+                    <p><?php the_field('blok_descr_escape_box'); ?></p>
+                </div>
             </a>
 
-            <a href="<?php echo site_url(); ?>/escape-games/" class="block-link col-md-12">
-                <img class="img-responsive" src="http://ad:8888/wp-content/uploads/2020/02/Escape-games.jpg" alt="">
-                <h3>Digitale Escape Games</h3>
+            <a href="<?php echo site_url(); ?>/escape-games/" class="block-link row d-flex">
+                <img class="img-responsive col-md-4" src="<?php the_field('afbeelding_escape_games'); ?>" alt="">
+                <div class="col-md-8">
+                    <h3><?php the_field('blok_titel_escape'); ?></h3>
+                    <p><?php the_field('blok_descr_escape'); ?></p>
+                </div>
             </a>
 
         </div>

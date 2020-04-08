@@ -1,6 +1,6 @@
 <!-- sidebar -->
 <aside class="sidebar" role="complementary">
-    <p class="sidebar__title">Filter Lessen</p>
+    <p class="sidebar__title">Filter Escape Games met Box</p>
     <?php
         $tags = ['taxonomy' => 'post_tag', 'post_type' => 'game'];
         $terms = get_terms( $tags );

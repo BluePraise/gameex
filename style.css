@@ -574,14 +574,13 @@ a img.aligncenter {
 }
 
 .game-post {
-  max-width: 760px;
+  max-width: 870px;
   margin-bottom: 35px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .main-landing .post__content {
-  max-width: 350px;
   color: black;
   margin-left: 30px;
   font-size: 16px;
@@ -632,11 +631,6 @@ a img.aligncenter {
   margin-top: 0;
 }
 
-.post-thumbnail {
-  width: 380px;
-  height: 100%;
-  margin-right: 30px;
-}
 .post-thumbnail a {
   display: inline-block;
   height: 100%;
@@ -674,7 +668,7 @@ a img.aligncenter {
   padding: 20px;
 }
 
-.collapse {
+.collapse-container {
   border: 1px solid #dddddd;
   padding: 8px 50px 8px 17px;
   -webkit-transition: 0.2s;
@@ -682,10 +676,10 @@ a img.aligncenter {
   transition: 0.2s;
   /* height: auto; */
 }
-.collapse:first-child {
+.collapse-container:first-child {
   border-radius: 4px 4px 0px 0px;
 }
-.collapse + .collapse {
+.collapse-container + .collapse-container {
   border-top: 0;
 }
 
@@ -718,8 +712,8 @@ a img.aligncenter {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color: black;
-  color: white;
+  /*background-color: black;*/
+  color: black;
   border-radius: 50%;
   position: relative;
   outline: none;
@@ -730,8 +724,8 @@ a img.aligncenter {
   content: "-";
   height: 100%;
   width: 100%;
-  font-size: 50px;
-  line-height: 31px;
+  font-size: 23px;
+  line-height: 32px;
 }
 .collapse__top--closed button:after {
   content: "+";
@@ -878,7 +872,7 @@ a img.aligncenter {
 
 .main-overview__content {
   -ms-flex-preferred-size: 800px;
-  flex-basis: 800px;
+  flex-basis: 900px;
 }
 
 .main-overview .sidebar {
@@ -1161,16 +1155,6 @@ margin-right: -30px;
 .escape-main-overview .block-link:hover {
   cursor: pointer;
   border: 1px solid rgba(204, 204, 204, 1);
-}
-
-.block-link img,
-.block-link h3 {
-  display: inline-block;
-}
-
-.block-link h3 {
-  line-height: 184px;
-  margin-left: 40px;
 }
 
 .escape-main-overview .content .wp-block-group {
