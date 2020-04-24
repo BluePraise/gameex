@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+	<main role="main" class="container">
 
 			<h1><?php the_title(); ?></h1>
 
@@ -36,8 +34,6 @@
 
 		<?php endif; ?>
 
-		</section>
-		<!-- /section -->
 	</main>
 
 <?php get_footer(); ?>

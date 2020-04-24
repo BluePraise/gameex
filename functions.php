@@ -284,19 +284,33 @@ add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 // Script for getting posts
 function ajax_filter_get_posts( $taxonomy ) {
 
+
   // Verify nonce
   if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
     die('Permission denied');
 
   $taxonomy = $_POST['taxonomy'];
+  $isBox = $_POST['isBox'];
+
+
 
   // WP Query
-  $args = array(
-    'tag' => $taxonomy,
-    'post_type' => 'game',
-    'category_name'  => 'escape-games',
-    'posts_per_page' => -1
-  );
+  if ($isBox) {
+      $args = array(
+        'tag' => $taxonomy,
+        'post_type' => 'game',
+        'category'         => 5,
+        'posts_per_page' => -1
+    );
+  } else {
+      $args = array(
+        'tag' => $taxonomy,
+        'post_type' => 'game',
+        'category'         => 3,
+        'posts_per_page' => -1
+      );
+  }
+
 
   // If taxonomy is not set, remove key from array and get all posts
   if( !$taxonomy ) {
@@ -361,7 +375,7 @@ add_action('wp_enqueue_scripts', 'ajax_search_posts_scripts', 100);
 
 
 // Script for getting posts
-function ajax_search_get_posts( $search ) {
+function ajax_search_get_escgames( $search ) {
 
   // Verify nonce
   if( !isset( $_GET['asp_nonce'] ) || !wp_verify_nonce( $_GET['asp_nonce'], 'asp_nonce' ) )
@@ -373,6 +387,7 @@ function ajax_search_get_posts( $search ) {
   $args = array(
     's' => esc_attr( $search ),
     'post_type' => 'post',
+    'category_name'  => 'digitale-toets',
     'posts_per_page' => -1
   );
 
@@ -419,8 +434,8 @@ function ajax_search_get_posts( $search ) {
   die();
 }
 
-add_action('wp_ajax_search_posts', 'ajax_search_get_posts');
-add_action('wp_ajax_nopriv_search_posts', 'ajax_search_get_posts');
+add_action('wp_ajax_search_posts', 'ajax_search_get_escgames');
+add_action('wp_ajax_nopriv_search_posts', 'ajax_search_get_escgames');
 
 
 /*------------------------------------*\
@@ -467,7 +482,4 @@ function new_excerpt_more( $more ) {
     return '';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
-
 ?>
-
-

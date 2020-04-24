@@ -1,14 +1,14 @@
 <?php /* Template Name: Escape Games Box */ get_header(); ?>
 
-	<main role="main" class="main-overview main-landing">
+	<main role="main" class="main-overview main-landing container">
         <?php get_sidebar('escbox'); ?>
 		<!-- section -->
 		<section class="main-overview__content">
 
-            <form class="main-overview__search js-search-overview form-group" method="get" action="<?php echo home_url(); ?>" role="search">
-                <input class="search-input form-control" type="search" name="s" placeholder="<?php _e( 'To search, type and hit enter.', 'gameexp' ); ?>">
+           <!--  <form class="main-overview__search js-search-overview form-group" method="get" action="<?php //echo home_url(); ?>" role="search">
+                <input class="search-input form-control" type="search" name="s" placeholder="<?php //_e( 'To search, type and hit enter.', 'gameexp' ); ?>">
                 <button class="search-submit btn btn-primary" type="submit">Zoek</button>
-            </form>
+            </form> -->
             <?php $query = new WP_Query([
                 'posts_per_page' => -1,
                 'post_type' => 'game',
@@ -16,7 +16,7 @@
             ]);
                 while ( $query->have_posts() ) : $query->the_post(); ?>
 
-            <article id="post-<?php the_ID();?>" <?php post_class('game-post container');?>>
+            <article id="post-<?php the_ID();?>" <?php post_class('game-post container mb-5 pb-5');?>>
 
                 <div class="d-flex row">
 
@@ -33,11 +33,19 @@
                         <h2>
                             <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
                         </h2>
+                        <ul class="rating">
+                            <li><i data-feather="star"></i></li>
+                            <li><i data-feather="star"></i></li>
+                            <li><i data-feather="star"></i></li>
+                            <li><i data-feather="star"></i></li>
+                            <li><i data-feather="star"></i></li>
+                        </ul>
                         <!-- /post title -->
-
                         <div class="single-fields">
+                            <?php
+                                //$tag = get_tag(); ?>
                             <div>
-                                <strong>Categorie:</strong> <span><?php echo get_the_category()[0]->cat_name ?></span>
+                                <span><?php the_tags('<strong>Categorie: </strong> ', ', ', ''); ?></span>
                             </div>
                             <div>
                                 <strong>Doel:</strong> <span><?php the_field('the_target'); ?></span>
@@ -59,6 +67,7 @@
 
                             <a href="<?php the_permalink();?>" class="btn btn-primary">Bekijk spel</a>
                         </div>
+                        <a href="#" class="d-block text-primary border-top pt-2 mt-3"><i data-feather="bookmark"></i><small>Voeg toe aan favorieten</small></a>
                     </div>
                 </div>
 

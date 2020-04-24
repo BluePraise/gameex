@@ -84,7 +84,9 @@ input:focus {
 }
 /* header */
 .header {
-  padding-top: 30px;
+  background-color: #133C69;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -102,7 +104,6 @@ input:focus {
 /* logo */
 .logo {
   display: inline-block;
-  background: #000000;
   border-radius: 25px;
   text-align: center;
   padding: 9px 15px;
@@ -116,6 +117,7 @@ input:focus {
 }
 .logo-img {
 }
+
 /* nav */
 .nav {
   display: -webkit-box;
@@ -194,7 +196,8 @@ input:focus {
 }
 
 .primary-menu a {
-    font-size: 20px;
+    font-size: 16px;
+    color: white;
 }
 
 .primary-menu a:hover,
@@ -343,7 +346,7 @@ input:focus {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #000;
+  background-color: #133C69;
   padding: 10px 20px 20px 30px;
   width: 100%;
 }
@@ -700,7 +703,7 @@ a img.aligncenter {
 }
 
 .collapse__top button {
-  border: 2px solid #000000;
+  border: 2px solid #133C69;
   height: 38px;
   width: 38px;
   display: -webkit-box;
@@ -712,7 +715,7 @@ a img.aligncenter {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  /*background-color: black;*/
+
   color: black;
   border-radius: 50%;
   position: relative;
@@ -721,6 +724,7 @@ a img.aligncenter {
 .collapse__top button:before,
 .collapse__top button:after {
   position: absolute;
+  color: #133C69;
   content: "-";
   height: 100%;
   width: 100%;
@@ -729,6 +733,7 @@ a img.aligncenter {
 }
 .collapse__top--closed button:after {
   content: "+";
+  color: #133C69;
 }
 
 .collapse__top--closed button:before {
@@ -890,6 +895,7 @@ a img.aligncenter {
       flex-basis: 100%;
 }
 .main-overview .game-post h2 {
+  display: inline-block;
   margin-bottom: 10px;
 }
 
@@ -911,7 +917,7 @@ a img.aligncenter {
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
-  color: #000000;
+  color: #133C69;
   margin-top: 0;
 }
 
@@ -943,7 +949,7 @@ a img.aligncenter {
   font-size: 16px;
   line-height: 19px;
   font-weight: 500;
-  color: #000000;
+  color: #133C69;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -957,7 +963,7 @@ a img.aligncenter {
   color: white;
   display: inline-block;
   padding: 0px 6px;
-  background: black;
+  background: #133C69;
   border-radius: 50%;
 }
 
@@ -1142,7 +1148,7 @@ margin-right: -30px;
 }
 
 .content {
-  margin: 140px 0;
+  margin: 140px auto;
   width: 100%;
 }
 
@@ -1151,6 +1157,10 @@ margin-right: -30px;
   padding: 40px;
   margin: 30px 0;
   border: 1px solid rgba(204, 204, 204, 0.33);
+}
+
+.escape-main-overview .content {
+
 }
 .escape-main-overview .block-link:hover {
   cursor: pointer;
@@ -1176,3 +1186,47 @@ margin-right: -30px;
   padding-top: 10px;
   border-top: 1px solid rgba(204, 204, 204, 0.33);
 }
+
+ul.rating {
+  display: inline-block;
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+ul.rating li {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+ul.rating li svg {
+  width: 18px;
+}
+
+/* Frontpage */
+
+.jumbotron {
+  padding:0;
+  margin-bottom: 0px;
+  max-width:100%;
+  min-height: 500px;
+  height: 100%;
+  background-size: 100%;
+  background-position: center center;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+   -o-background-size: 100%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+   -o-background-size: cover;
+}
+
+.jumbotron h2 {
+  text-shadow: 5px 6px 16px #4e4747;
+}
+
+.column {
+  padding: 0 40px;
+}
+

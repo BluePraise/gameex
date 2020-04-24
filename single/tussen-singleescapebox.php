@@ -37,11 +37,11 @@
     <div class="button-set mt-4">
     <?php if (get_field('game_link')): ?>
 
-        <a href="<?php the_field('game_link') ?>" class="btn btn-primary">Google Drive</a>
+        <a href="<?php the_field('gdrive_link') ?>" class="btn btn-primary">Documenten</a>
     <?php endif; ?>
     <?php if (get_field('game_link')): ?>
 
-            <a href="<?php the_field('game_link') ?>" class="btn btn-primary">Start spel</a>
+            <a href="<?php the_field('game_link') ?>" class="btn btn-primary">Klok</a>
 
 
     <?php endif; ?>

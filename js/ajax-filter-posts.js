@@ -12,6 +12,7 @@
                 event.returnValue = false;
             }
             var checkbox = $(this).find("input");
+            var isBox = $(this).hasClass("js-filter-box");
             checkbox.prop("checked", !checkbox.prop("checked"));
 
             // Get tag slug from title attirbute
@@ -27,7 +28,8 @@
             var data = {
                 action: "filter_posts", // function to execute
                 afp_nonce: afp_vars.afp_nonce, // wp_nonce
-                taxonomy: tags.join(",")
+                taxonomy: tags.join(","),
+                isBox: isBox
             };
 
             $.post({

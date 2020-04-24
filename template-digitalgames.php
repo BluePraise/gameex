@@ -1,15 +1,15 @@
 <?php /* Template Name: Digital Toetsen Template */ get_header(); ?>
 
-	<main role="main" class="main-overview main-landing">
+	<main role="main" class="main-overview main-landing container">
 		<!-- section -->
         <?php get_sidebar('toetsen') ?>
 		<section class="main-overview__content">
 
 
-            <form class="main-overview__search js-search-overview form-group" method="get" action="<?php echo home_url(); ?>" role="search">
-                <input class="search-input form-control" type="search" name="s" placeholder="<?php _e( 'To search, type and hit enter.', 'gameexp' ); ?>">
+           <!--  <form class="main-overview__search js-search-overview form-group" method="get" action="<?php //echo home_url(); ?>" role="search">
+                <input class="search-input form-control" type="search" name="s" placeholder="<?php //_e( 'To search, type and hit enter.', 'gameexp' ); ?>">
                 <button class="search-submit btn btn-primary" type="submit">Zoek</button>
-            </form>
+            </form> -->
 
 
             <div class="main-overview__posts d-flex jcsb fx-wrap">
@@ -59,7 +59,7 @@
 
                             <a href="#" class="btn btn-primary">Zet toets klaar</a>
                             <a href="<?php the_permalink();?>" class="btn btn-primary">Toets inzien</a>
-                            <a href="#" class="btn btn-primary">Rapportage</a>
+                            <a href="<?php the_field('google_drive_link');?>" class="btn btn-primary">Rapportage</a>
                         </div>
                     </div>
 
