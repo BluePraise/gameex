@@ -9,10 +9,11 @@
 
     var pluginName = "pinlogin",
         defaults = {
-            fields: 5, // number of fields
-            placeholder: "•", // character that's displayed after entering a number in a field
-            autofocus: true, // focus on the first field at loading time
-            hideinput: true, // hide the input digits and replace them with placeholder
+            fields: 4, // number of fields
+            placeholder: "", // character that's displayed after entering a number in a field
+            autofocus: false, // focus on the first field at loading time
+            reset: false,
+            hideinput: false, // hide the input digits and replace them with placeholder
             complete: function(pin) {
                 // fires when all fields are filled in
                 // pin    :    the entered pincode
@@ -169,10 +170,11 @@
                         var pin = that._values.join("");
 
                         // reset the plugin
-                        that._reset();
+                        // that._reset();
 
                         // fire complete callback
-                        that.settings.complete(pin);
+                        return false;
+                        // that.settings.complete(pin);
                     }
                 })
             );

@@ -5,10 +5,10 @@
 		<!-- section -->
 		<section class="main-overview__content">
 
-           <!--  <form class="main-overview__search js-search-overview form-group" method="get" action="<?php //echo home_url(); ?>" role="search">
-                <input class="search-input form-control" type="search" name="s" placeholder="<?php //_e( 'To search, type and hit enter.', 'gameexp' ); ?>">
+            <form class="main-overview__search js-search-overview form-group" method="get" action="<?php echo home_url(); ?>" role="search">
+                <input class="search-input form-control" type="search" name="s" placeholder="<?php _e( 'To search, type and hit enter.', 'gameexp' ); ?>">
                 <button class="search-submit btn btn-primary" type="submit">Zoek</button>
-            </form> -->
+            </form>
             <?php $query = new WP_Query([
                 'posts_per_page' => -1,
                 'post_type' => 'game',
@@ -48,7 +48,7 @@
                                 <span><?php the_tags('<strong>Categorie: </strong> ', ', ', ''); ?></span>
                             </div>
                             <div>
-                                <strong>Doel:</strong> <span><?php the_field('the_target'); ?></span>
+                                <strong>Doel:</strong> <span><?php the_field('target'); ?></span>
                             </div>
                             <div>
                                 <?php if (get_field('age')): ?>

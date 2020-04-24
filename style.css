@@ -853,6 +853,10 @@ a img.aligncenter {
   justify-content: space-between;
 }
 
+.form-control {
+  height: auto !important;
+}
+
 .main-overview__search {
   position: relative;
   margin-bottom: 20px;
@@ -865,13 +869,6 @@ a img.aligncenter {
 }
 
 .main-overview__search .search-submit {
-  font-weight: 700;
-  font-size: 24px;
-  color: #ffffff;
-  background: black;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 5px;
   margin-left: 10px;
 }
 
