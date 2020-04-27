@@ -28,7 +28,7 @@
 
 					<!-- logo -->
 					<div class="logo navbar-brand ">
-						<a href="<?php echo home_url(); ?>">Game ×perience</a>
+						<a href="<?php echo site_url(); ?>"><?php echo get_bloginfo('name'); ?></a>
 					</div>
 					<!-- /logo -->
 

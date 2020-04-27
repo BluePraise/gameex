@@ -437,6 +437,17 @@ function ajax_search_get_escgames( $search ) {
 add_action('wp_ajax_search_posts', 'ajax_search_get_escgames');
 add_action('wp_ajax_nopriv_search_posts', 'ajax_search_get_escgames');
 
+function my_acf_json_load_point( $paths ) {
+    // remove original path (optional)
+    unset($paths[0]);
+
+    // append path
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+
+    // return
+    return $paths;
+}
+
 
 /*------------------------------------*\
 Actions + Filters + ShortCodes
@@ -474,6 +485,9 @@ add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed i
     add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+// ACF JSON https://www.advancedcustomfields.com/resources/local-json/
+add_filter('acf/settings/load_json', 'my_acf_json_load_point');
+
 
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether

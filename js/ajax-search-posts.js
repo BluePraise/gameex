@@ -25,13 +25,13 @@
                 url: asp_vars.asp_ajax_url,
                 data: data,
                 beforeSend: function() {
-                    $(".main-overview__in").addClass("js-loading");
+                    $(".js-loading-container").addClass("js-loading");
                 },
                 success: function(response) {
                     if (response) {
                         // Display posts on page
-                        $(".main-overview__posts").html(response);
-                        $(".main-overview__in").removeClass("js-loading");
+                        $(".js-ajax-posts").html(response);
+                        $(".js-loading-container").removeClass("js-loading");
                     }
                 }
             });

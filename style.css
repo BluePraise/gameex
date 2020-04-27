@@ -547,6 +547,11 @@ a img.aligncenter {
   -ms-flex-align: center;
   align-items: center;
 }
+.align-items-start {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
 
 .fx-dir-col {
   -webkit-box-orient: vertical;

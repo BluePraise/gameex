@@ -3,7 +3,7 @@
         <footer class="footer" role="contentinfo">
             <div class="wrapper">
                 <div class="d-flex jcsb align-items-center">
-                    <div class="logo"> <a href="/">Game ×perience</a> </div>
+                    <div class="logo"> <a href="<?php echo site_url(); ?>"><?php echo get_bloginfo('name'); ?></a> </div>
                     <ul class="social-links">
                         <li>
                             <a href="">
