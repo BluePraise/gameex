@@ -13,6 +13,8 @@
             }
             var checkbox = $(this).find("input");
             var isBox = $(this).hasClass("js-filter-box") ? 1 : 0;
+            var isDigital = $(this).hasClass("js-filter-digital") ? 1 : 0;
+
             checkbox.prop("checked", !checkbox.prop("checked"));
 
             // Get tag slug from title attirbute
@@ -29,7 +31,8 @@
                 action: "filter_posts", // function to execute
                 afp_nonce: afp_vars.afp_nonce, // wp_nonce
                 taxonomy: JSON.stringify(tags),
-                isBox: isBox
+                isBox: isBox,
+                isDigital: isDigital,
             };
 
             $.post({
@@ -44,7 +47,7 @@
                         $(".js-ajax-posts").html(response);
                         $(".js-loading-container").removeClass("js-loading");
                     }
-                }
+                },
             });
         });
     });

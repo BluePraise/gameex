@@ -14,7 +14,7 @@
     <!-- /post title -->
     <div class="single-fields">
         <div>
-            <strong>Categorie:</strong> <span><?php echo get_the_category()[0]->cat_name ?></span>
+            <strong>Categorie: </strong><span><?php the_field('game_box_category'); ?></span>
         </div>
         <div>
             <?php if (get_field('target')): ?>
@@ -27,11 +27,16 @@
             <?php endif; ?>
         </div>
 
-       <!--  <div>
-            <?php //if (get_field('time')): ?>
-            <strong>Tijd:</strong> <span> <?php //the_field('time') ?> </span>
-            <?php //endif; ?>
-        </div> -->
+       <div>
+            <?php if (get_field('time')): ?>
+            <strong>Tijd:</strong> <span> <?php the_field('time') ?> </span>
+            <?php endif; ?>
+        </div>
+        <div>
+            <?php if (get_field('korte_omschrijving')): ?>
+                <span> <?php the_field('korte_omschrijving') ?> </span>
+            <?php endif; ?>
+        </div>
     </div>
 
     <div class="button-set mt-4">

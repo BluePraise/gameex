@@ -7,7 +7,7 @@
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="row">
             <?php
-                    include 'single/tussen-singleescapebox.php';
+                include 'single/tussen-singleescapebox.php';
              ?>
 
             </div>

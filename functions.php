@@ -267,176 +267,6 @@ function remove_thumbnail_dimensions($html)
     return $html;
 }
 
-
-function ajax_filter_posts_scripts() {
-  // Enqueue script
-  wp_register_script('afp_script', get_template_directory_uri() . '/js/ajax-filter-posts.js', false, null, false);
-  wp_enqueue_script('afp_script');
-
-  wp_localize_script( 'afp_script', 'afp_vars', array(
-        'afp_nonce' => wp_create_nonce( 'afp_nonce' ), // Create nonce which we later will use to verify AJAX request
-        'afp_ajax_url' => admin_url( 'admin-ajax.php' ),
-      )
-  );
-}
-add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
-
-// Script for getting posts
-function ajax_filter_get_posts( $taxonomy ) {
-
-
-  // Verify nonce
-  if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
-    die('Permission denied');
-
-  $taxonomy = $_POST['taxonomy'];
-  $isBox = $_POST['isBox'];
-
-
-
-  // WP Query
-  if ($isBox) {
-      $args = array(
-        'tag' => $taxonomy,
-        'post_type' => 'game',
-        'category'         => 5,
-        'posts_per_page' => -1
-    );
-  } else {
-      $args = array(
-        'tag' => $taxonomy,
-        'post_type' => 'game',
-        'category'         => 3,
-        'posts_per_page' => -1
-      );
-  }
-
-
-  // If taxonomy is not set, remove key from array and get all posts
-  if( !$taxonomy ) {
-    unset( $args['tag'] );
-  }
-
-  $query = new WP_Query( $args );
-
-  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-
-    <article id="post-<?php the_ID();?>" class="game-post">
-
-        <div class="d-flex row">
-
-            <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
-                <div class="game-post__thumbnail col-md-4">
-                    <a href="<?php the_permalink();?>" title="<?php the_title();?>">
-                        <?php the_post_thumbnail(array(380, 250)); // Declare pixel size you need inside the array ?>
-                    </a>
-                </div>
-            <?php endif;?>
-
-            <div class="post__content col-md-8">
-                <!-- post title -->
-                <h2>
-                    <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
-                </h2>
-                <!-- /post title -->
-
-                <div>
-                    <?php html5wp_excerpt('html5wp_overview'); // Build your custom callback length in functions.php ?>
-                </div>
-            </div>
-        </div>
-
-    </article>
-  <?php endwhile; ?>
-  <?php else: ?>
-    <h2>No posts found</h2>
-  <?php endif;
-
-  die();
-}
-
-add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
-add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
-
-
-function ajax_search_posts_scripts() {
-  // Enqueue script
-  wp_register_script('asp_script', get_template_directory_uri() . '/js/ajax-search-posts.js', false, null, false);
-  wp_enqueue_script('asp_script');
-
-  wp_localize_script( 'asp_script', 'asp_vars', array(
-        'asp_nonce' => wp_create_nonce( 'asp_nonce' ), // Create nonce which we later will use to verify AJAX request
-        'asp_ajax_url' => admin_url( 'admin-ajax.php' ),
-      )
-  );
-}
-add_action('wp_enqueue_scripts', 'ajax_search_posts_scripts', 100);
-
-
-
-// Script for getting posts
-function ajax_search_get_escgames( $search ) {
-
-  // Verify nonce
-  if( !isset( $_GET['asp_nonce'] ) || !wp_verify_nonce( $_GET['asp_nonce'], 'asp_nonce' ) )
-    die('Permission denied');
-
-  $search = $_GET['search'];
-
-  // WP Query
-  $args = array(
-    's' => esc_attr( $search ),
-    'post_type' => 'post',
-    'category_name'  => 'digitale-toets',
-    'posts_per_page' => -1
-  );
-
-  // If taxonomy is not set, remove key from array and get all posts
-  if( !$search) {
-    unset( $args['s'] );
-  }
-
-  $query = new WP_Query( $args );
-
-  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-
-    <article id="post-<?php the_ID();?>" class="game-post">
-
-        <div class="d-flex row">
-
-            <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
-                <div class="game-post__thumbnail col-md-4">
-                    <a href="<?php the_permalink();?>" title="<?php the_title();?>">
-                        <?php the_post_thumbnail(array(380, 250)); // Declare pixel size you need inside the array ?>
-                    </a>
-                </div>
-            <?php endif;?>
-
-            <div class="post__content col-md-8">
-                <!-- post title -->
-                <h2>
-                    <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
-                </h2>
-                <!-- /post title -->
-
-                <div>
-                    <?php html5wp_excerpt('html5wp_overview'); // Build your custom callback length in functions.php ?>
-                </div>
-            </div>
-        </div>
-
-    </article>
-  <?php endwhile; ?>
-  <?php else: ?>
-    <h2>No posts found</h2>
-  <?php endif;
-
-  die();
-}
-
-add_action('wp_ajax_search_posts', 'ajax_search_get_escgames');
-add_action('wp_ajax_nopriv_search_posts', 'ajax_search_get_escgames');
-
 function my_acf_json_load_point( $paths ) {
     // remove original path (optional)
     unset($paths[0]);
@@ -447,6 +277,7 @@ function my_acf_json_load_point( $paths ) {
     // return
     return $paths;
 }
+
 
 
 /*------------------------------------*\
@@ -485,6 +316,7 @@ add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed i
     add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+
 // ACF JSON https://www.advancedcustomfields.com/resources/local-json/
 add_filter('acf/settings/load_json', 'my_acf_json_load_point');
 
@@ -496,4 +328,8 @@ function new_excerpt_more( $more ) {
     return '';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
-?>
+
+
+
+require_once get_stylesheet_directory() . '/inc/ajax-posts.php';
+
